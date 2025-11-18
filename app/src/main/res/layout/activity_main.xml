@@ -26,6 +26,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
+            android:textAppearance="Large"
             android:text="@string/play"
             android:onClick="onClickPlay"
             />
@@ -41,8 +42,9 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
+            android:textAppearance="Large"
             android:text="@string/leaderboard"
-            android:onClick="onClickLeaderboard"
+            android:onClick="onClickLeaderboard"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
