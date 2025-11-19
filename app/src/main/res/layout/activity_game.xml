@@ -27,7 +27,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:textAppearance="@style/TextAppearance.AppCompat.Title"
-                android:layout_gravity="center"
+                android:gravity="center"
                 android:text="Timer:0"/>
             <TextView
                 android:id="@+id/tv_score_text"
@@ -35,7 +35,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:textAppearance="@style/TextAppearance.AppCompat.Title"
-                android:layout_gravity="center"
+                android:gravity="center"
                 android:text="Score:0"/>
 
         </LinearLayout>
