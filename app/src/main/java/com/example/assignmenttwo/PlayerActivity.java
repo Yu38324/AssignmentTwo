@@ -38,16 +38,16 @@ public class PlayerActivity extends AppCompatActivity {
     public void onclickSubmit(View view){
         String name = ((EditText)findViewById(R.id.et_playername)).getText().toString();
         if (!name.isEmpty()) {
-            // get the chosen avatar
             String color = "Grey";
             RadioGroup rg = findViewById(R.id.rg_avator);
             int selectedId = rg.getCheckedRadioButtonId();
             if (selectedId != -1) {
                 color = ((RadioButton)findViewById(selectedId)).getText().toString();
             }
+            // change it to id
+            int avatarResId = getAvatarResourceId(color);
 
-            Drawable avatar = getResources().getDrawable(getAvatarResourceId(color));
-            Player player = new Player(name, avatar, finalScore);
+            Player player = new Player(name, avatarResId, finalScore);
             Leaderboard.getInstance().updateLeaderboard(player);
 
             startActivity(new Intent(this, LeaderboardActivity.class));

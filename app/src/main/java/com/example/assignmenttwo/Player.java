@@ -1,15 +1,13 @@
 package com.example.assignmenttwo;
 
-import android.graphics.drawable.Drawable;
-
 public class Player {
     String name;
-    Drawable avatar;
+    int avatarResId; // 改为存储资源ID
     int score;
 
-    public Player(String name, Drawable avatar, int score) {
+    public Player(String name, int avatarResId, int score) {
         this.name = name;
-        this.avatar = avatar;
+        this.avatarResId = avatarResId;
         this.score = score;
     }
 
@@ -17,8 +15,8 @@ public class Player {
         return name;
     }
 
-    public Drawable getPlayerAvatar(){
-        return avatar;
+    public int getAvatarResId(){
+        return avatarResId;
     }
 
     public int getPlayerScore(){

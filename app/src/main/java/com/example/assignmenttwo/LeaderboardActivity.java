@@ -38,7 +38,7 @@ public class LeaderboardActivity extends AppCompatActivity {
             if (i < players.size()) {
                 // Set player data
                 Player player = players.get(i);
-                avatar.setImageDrawable(player.getPlayerAvatar());
+                avatar.setImageResource(player.getAvatarResId());
                 name.setText(player.getPlayerName());
                 score.setText(String.valueOf(player.getPlayerScore()));
             } else {
