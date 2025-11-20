@@ -21,8 +21,8 @@ public class GameLogic {
     boolean isGameRunning;
     Context context;
 
-    private static final long DEFAULT_MOLE_DISPLAY_TIME = 800; // 地鼠显示时间（毫秒）
-    private static final long DEFAULT_GAME_DURATION = 30000; // 游戏总时长（毫秒）
+    private static final long DEFAULT_MOLE_DISPLAY_TIME = 1000;
+    private static final long DEFAULT_GAME_DURATION = 30000;
 
     public GameLogic(Context context, ArrayList<ImageView> moleViews, TextView scoreText, TextView timeText) {
         this.context = context;
@@ -130,15 +130,23 @@ public class GameLogic {
     }
 
     private void setupClickListeners() {
-        for (final Mole mole : moles) {
-            mole.getImageView().setOnClickListener(new android.view.View.OnClickListener() {
+        for (int i = 0; i < moles.size(); i++) {
+            final int index = i;
+            moles.get(i).getImageView().setOnClickListener(new android.view.View.OnClickListener() {
                 @Override
                 public void onClick(android.view.View v) {
-                    if (mole.isVisible()) {
-                        // hit mole plus score
+                    Mole clickedMole = moles.get(index);
+                    if (clickedMole.isVisible()) {
+                        // hit mole add score
                         currentScore += 10;
                         updateScoreText();
-                        hideMole();
+                        // reshow the hit mole
+                        clickedMole.setVisible(false);
+                        clickedMole.getImageView().setImageResource(R.drawable.img_without_mole);
+
+                        if (currentMoleIndex == index) {
+                            currentMoleIndex = -1;
+                        }
 
                     }
                 }

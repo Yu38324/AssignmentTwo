@@ -36,6 +36,6 @@ public class Leaderboard {
     }
 
     public ArrayList<Player> getLeaderboard(){
-        return new ArrayList<>(leaderboard); // 返回副本防止外部修改
+        return new ArrayList<>(leaderboard);
     }
 }
