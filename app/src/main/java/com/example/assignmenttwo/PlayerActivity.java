@@ -23,23 +23,22 @@ public class PlayerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_player);
 
-        // 初始化视图
+        // initialize
         tv_playerscore = findViewById(R.id.tv_playerscore);
         et_playername = findViewById(R.id.et_playername);
         rg_avatar = findViewById(R.id.rg_avator);
 
-        // 获取分数并显示
         finalScore = getIntent().getIntExtra("SCORE", 0);
         tv_playerscore.setText("Score: " + finalScore);
 
-        // 获取 Leaderboard 实例
+        // gain leaderboard instance
         leaderboardInstance = Leaderboard.getInstance();
     }
 
     public void onclickSubmit(View view){
         String name = ((EditText)findViewById(R.id.et_playername)).getText().toString();
         if (!name.isEmpty()) {
-            // 获取选择的头像颜色
+            // get the chosen avatar
             String color = "Grey";
             RadioGroup rg = findViewById(R.id.rg_avator);
             int selectedId = rg.getCheckedRadioButtonId();
@@ -47,12 +46,10 @@ public class PlayerActivity extends AppCompatActivity {
                 color = ((RadioButton)findViewById(selectedId)).getText().toString();
             }
 
-            // 创建玩家并更新排行榜
             Drawable avatar = getResources().getDrawable(getAvatarResourceId(color));
             Player player = new Player(name, avatar, finalScore);
             Leaderboard.getInstance().updateLeaderboard(player);
 
-            // 跳转到排行榜
             startActivity(new Intent(this, LeaderboardActivity.class));
             finish();
         }
